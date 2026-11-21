@@ -1,0 +1,266 @@
+/* Lantern Row — Spot the Difference: the whole look, in one file.
+   Dark night-market palette, warm gold accents, system fonts only. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0b0f24;
+  color: #f2e9d8;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#app {
+  width: 1280px;
+  margin: 0 auto;
+  padding: 12px 16px 8px;
+}
+
+/* ------------------------------------------------------------ header */
+
+#hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 4px 12px;
+}
+
+#hud h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #ffd94a;
+  letter-spacing: 0.5px;
+}
+
+#hud h1 .sub {
+  font-size: 16px;
+  color: #b9c4e8;
+  font-weight: 400;
+}
+
+#level-name {
+  font-size: 14px;
+  color: #b9c4e8;
+  margin-top: 2px;
+}
+
+.hud-mid {
+  text-align: center;
+  flex: 1;
+}
+
+#counter {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+#timer-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+#timer-bar {
+  flex: 1;
+  height: 12px;
+  background: #232a4a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#timer-fill {
+  height: 100%;
+  width: 100%;
+  background: #4fc46a;
+  border-radius: 6px;
+  transition: width 0.2s linear, background 0.3s;
+}
+
+#timer-fill.low { background: #f2a93b; }
+#timer-fill.urgent { background: #e23b3b; }
+
+#timer-text {
+  font-size: 17px;
+  font-weight: 700;
+  min-width: 44px;
+}
+
+.hud-right { text-align: right; }
+
+#score {
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffd94a;
+}
+
+#streak {
+  font-size: 13px;
+  color: #b9c4e8;
+  margin-top: 2px;
+}
+
+.hud-buttons { margin-top: 6px; }
+
+button {
+  background: #232a4a;
+  color: #f2e9d8;
+  border: 1px solid #3a4470;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) { background: #2f3860; }
+button:disabled { opacity: 0.45; cursor: default; }
+
+button.big {
+  background: #e8a91c;
+  color: #1a1206;
+  border: none;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 12px 34px;
+  margin-top: 14px;
+}
+
+button.big:hover { background: #ffd94a; }
+
+/* ------------------------------------------------------------ panels */
+
+#panels {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+}
+
+.panel { margin: 0; }
+
+.panel canvas {
+  display: block;
+  width: 560px;
+  height: 460px;
+  border: 3px solid #3a4470;
+  border-radius: 12px;
+  background: #101736;
+  cursor: crosshair;
+}
+
+.panel figcaption {
+  text-align: center;
+  font-size: 13px;
+  color: #b9c4e8;
+  margin-top: 6px;
+}
+
+#vs {
+  align-self: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffd94a;
+  background: #232a4a;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  line-height: 52px;
+  text-align: center;
+  flex: none;
+}
+
+/* A wrong click shakes both panels, gently. */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+#panels.shake { animation: shake 0.35s ease; }
+
+#help {
+  text-align: center;
+  font-size: 13px;
+  color: #b9c4e8;
+  padding: 10px 0 4px;
+}
+
+#help b { color: #ffd94a; }
+
+/* ------------------------------------------------------------ overlays */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 20, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.overlay.hidden { display: none; }
+
+.card {
+  background: #141a38;
+  border: 2px solid #3a4470;
+  border-radius: 16px;
+  padding: 28px 36px;
+  max-width: 560px;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 34px;
+  color: #ffd94a;
+}
+
+.card .tagline {
+  font-size: 18px;
+  color: #b9c4e8;
+  margin: 0 0 14px;
+}
+
+.card p { font-size: 15px; line-height: 1.5; }
+
+.card .howto {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.9;
+  padding-left: 20px;
+}
+
+.card .fine {
+  font-size: 12px;
+  color: #8a94b8;
+  margin-top: 16px;
+}
+
+.stars {
+  font-size: 34px;
+  color: #ffd94a;
+  letter-spacing: 6px;
+  margin: 8px 0;
+}
+
+.big-score {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffd94a;
+}
+
+#status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

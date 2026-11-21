@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Row — Spot the Difference</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <div class="hud-left">
+      <h1>Lantern Row <span class="sub">— Spot the Difference</span></h1>
+      <div id="level-name">Level 1 · Lantern Row</div>
+    </div>
+    <div class="hud-mid">
+      <div id="counter">0 of 5 found — 5 remain</div>
+      <div id="timer-row">
+        <div id="timer-bar"><div id="timer-fill"></div></div>
+        <span id="timer-text">2:00</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div id="score">Score 0</div>
+      <div id="streak">Streak —</div>
+      <div class="hud-buttons">
+        <button id="hint-btn" type="button">💡 Hint (<span id="hint-count">Hints 3</span>)</button>
+        <button id="mute-btn" type="button">🔊 Sound on</button>
+        <button id="restart-btn" type="button">↺ Restart</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="panels">
+    <figure class="panel">
+      <canvas id="panel-left" width="560" height="460" aria-label="Left picture: find the differences"></canvas>
+      <figcaption>Left picture</figcaption>
+    </figure>
+    <div id="vs">VS</div>
+    <figure class="panel">
+      <canvas id="panel-right" width="560" height="460" aria-label="Right picture: find the differences"></canvas>
+      <figcaption>Right picture</figcaption>
+    </figure>
+  </main>
+
+  <footer id="help">
+    Click a difference on either picture to mark it on both. Wrong click: −5 seconds.
+    Keys: <b>H</b> hint · <b>M</b> mute · <b>R</b> restart level · <b>Esc</b> pause · <b>N</b> next level.
+  </footer>
+
+  <div id="overlay-title" class="overlay">
+    <div class="card">
+      <h2>🏮 Lantern Row</h2>
+      <p class="tagline">Spot the Difference</p>
+      <p>Two pictures hang side by side. They look the same — but they are not.
+      Find every difference before the clock runs out.</p>
+      <ul class="howto">
+        <li>🖱️ <b>Click</b> a difference on either picture to mark it on both.</li>
+        <li>⭐ 100 points per find, plus a streak bonus. Hints cost 50 points.</li>
+        <li>⏱️ A wrong click costs 5 seconds and breaks your streak.</li>
+        <li>🌊 Three scenes: Lantern Row (5), Coral Reef (7), Starlight Camp (9).</li>
+      </ul>
+      <button id="play-btn" type="button" class="big">▶ Play</button>
+      <p class="fine">Mouse and keyboard only · No downloads · Works offline</p>
+    </div>
+  </div>
+
+  <div id="overlay-pause" class="overlay hidden">
+    <div class="card">
+      <h2>Paused</h2>
+      <p>Take a breath. The lanterns will wait.</p>
+      <button id="resume-btn" type="button" class="big">▶ Resume</button>
+      <button id="quit-title-btn" type="button">Back to title</button>
+    </div>
+  </div>
+
+  <div id="overlay-level" class="overlay hidden">
+    <div class="card">
+      <h2 id="level-title">Level complete!</h2>
+      <div id="level-stars" class="stars">★★★</div>
+      <p id="level-summary"></p>
+      <button id="next-btn" type="button" class="big">Next level (N)</button>
+    </div>
+  </div>
+
+  <div id="overlay-game" class="overlay hidden">
+    <div class="card">
+      <h2>🎉 You found them all!</h2>
+      <div class="stars">★★★</div>
+      <p>Final score</p>
+      <div id="final-score" class="big-score">0</div>
+      <p id="final-summary"></p>
+      <button id="again-btn" type="button" class="big">↺ Play again</button>
+    </div>
+  </div>
+</div>
+<p id="status" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
